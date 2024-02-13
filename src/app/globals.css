@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 html,
 body {
@@ -13,6 +12,11 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+/* 
+R (0)
+G (110)
+B (255 */
 
 @layer base {
   :root {
@@ -46,46 +50,46 @@ body {
 
     --radius: 0.5rem;
   }
- 
+
   .dark {
     /* Name: custom color palette
        Author: Ilias Ism
        URL: https://gradient.page */
 
     /* CSS: .bg-gradient { background: var(--gradient) } */
-    --gradient: linear-gradient(to top left,#076585,#fff);
+    --gradient: linear-gradient(to top left, #007adf, #00ecbc);
 
-    --background: 207 58.5% 2.16%;
-    --foreground: 207 9% 96.35%;
+    --background: 220 65% 3.52%;
+    --foreground: 220 10% 97.2%;
 
-    --muted: 207 45% 8.100000000000001%;
-    --muted-foreground: 207 9% 52.7%;
+    --muted: 220 50% 13.2%;
+    --muted-foreground: 220 10% 54.4%;
 
-    --popover: 207 47% 3.5100000000000002%;
-    --popover-foreground: 207 9% 96.35%;
+    --popover: 220 45% 5.72%;
+    --popover-foreground: 220 10% 97.2%;
 
-    --card: 207 47% 3.5100000000000002%;
-    --card-foreground: 207 9% 96.35%;
+    --card: 220 45% 5.72%;
+    --card-foreground: 220 10% 97.2%;
 
-    --border: 207 45% 8.100000000000001%;
-    --input: 207 45% 8.100000000000001%;
+    --border: 220 50% 13.2%;
+    --input: 220 50% 13.2%;
 
-    --primary: 207 90% 27%;
-    --primary-foreground: 207 9% 96.35%;
+    --primary: 220 100% 44%;
+    --primary-foreground: 220 10% 97.2%;
 
-    --secondary: 207 45% 8.100000000000001%;
-    --secondary-foreground: 207 9% 96.35%;
+    --secondary: 220 50% 13.2%;
+    --secondary-foreground: 220 10% 97.2%;
 
-    --accent: 207 45% 8.100000000000001%;
-    --accent-foreground: 207 9% 96.35%;
+    --accent: 220 50% 13.2%;
+    --accent-foreground: 220 10% 97.2%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 207 9% 96.35%;
+    --destructive-foreground: 220 10% 97.2%;
 
-    --ring: 207 90% 27%;
+    --ring: 220 100% 44%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
