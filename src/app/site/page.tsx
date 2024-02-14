@@ -28,8 +28,19 @@ export default function Home() {
         />
         <p className='text-2xl italic text-center '> Run your agency at one place</p>
         <div className='bg-gradient-to-r from-primary to-secondary-foreground text-transparent bg-clip-text relative'>
-          <h1 className='text-5xl font-bold text-center md:text-[300px]'>SoFlow</h1>
+          <h1 className='text-5xl font-bold text-center md:text-[200px]'>SoFlow</h1>
         </div>
+        <div className="flex justify-center items-center relative md:mt-[-70px]">
+
+            <Image 
+              src={"/assets/preview.png"}
+              alt="banner image"
+              height={1200}
+              width={1200}
+              className="rounded-tl-2xl rounded-tr-2xl border-2 border-muted"
+            />
+            <div className="bottom-0 top-[50%] bg-gradient-to-t dark:from-background left-0 right-0 absolute z-10"></div>
+          </div>
       </section>
     </>
   );
