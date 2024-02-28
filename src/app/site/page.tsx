@@ -1,5 +1,6 @@
 import MainContent from '@/components/homeComponents/MainContent'
 import MainPageCardComponents from '@/components/homeComponents/MainPageCardComponents'
+import WeAreOpensourced from '@/components/homeComponents/WeAreOpensourced'
 import WhyUs from '@/components/homeComponents/WhyUs'
 import {
   Card,
@@ -33,6 +34,7 @@ export default function Home() {
         <WhyUs />
         <MainPageCardComponents />
       </section>
+      <WeAreOpensourced />
     </>
   );
 }
