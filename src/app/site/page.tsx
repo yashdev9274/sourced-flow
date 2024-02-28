@@ -1,3 +1,4 @@
+import Footer from '@/components/homeComponents/Footer'
 import MainContent from '@/components/homeComponents/MainContent'
 import MainPageCardComponents from '@/components/homeComponents/MainPageCardComponents'
 import WeAreOpensourced from '@/components/homeComponents/WeAreOpensourced'
@@ -35,6 +36,7 @@ export default function Home() {
         <MainPageCardComponents />
       </section>
       <WeAreOpensourced />
+      <Footer/>
     </>
   );
 }
