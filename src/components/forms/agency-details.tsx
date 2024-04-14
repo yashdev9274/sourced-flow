@@ -14,7 +14,9 @@ import {
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import { Form } from '../ui/form'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '../ui/form'
+import FileUpload from '../global/file-upload'
+// import FileUpload from '../global/file-upload'
 
 type Props = {
     data?: Partial<Agency>
@@ -53,12 +55,15 @@ const AgencyDetails = ({ data }: Props) => {
             agencyLogo: data?.agencyLogo,
         },
     })
+    const isLoading = form.formState.isSubmitting
 
     useEffect(() => {
         if (data) {
             form.reset(data)
         }
     }, [data])
+
+    const handleSubmit = async () => { }
 
     return (
         <AlertDialog>
@@ -73,7 +78,26 @@ const AgencyDetails = ({ data }: Props) => {
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>
-                        <form></form>
+                        <form
+                            onSubmit={form.handleSubmit(handleSubmit)}
+                            className="space-y-4"
+                        >
+                            <FormField
+                                disabled={isLoading}
+                                control={form.control}
+                                name="agencyLogo"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Company Logo</FormLabel>
+                                        <FormControl>
+                                            <FileUpload></FileUpload>
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+
+                            {/* </FormField> */}
+                        </form>
                     </Form>
                 </CardContent>
             </Card>
@@ -82,3 +106,7 @@ const AgencyDetails = ({ data }: Props) => {
 }
 
 export default AgencyDetails
+
+function async() {
+    throw new Error('Function not implemented.')
+}
