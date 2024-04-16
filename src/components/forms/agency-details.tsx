@@ -90,8 +90,13 @@ const AgencyDetails = ({ data }: Props) => {
                                     <FormItem>
                                         <FormLabel>Company Logo</FormLabel>
                                         <FormControl>
-                                            <FileUpload></FileUpload>
+                                            <FileUpload
+                                                apiEndpoint='agencyLogo'
+                                                onChange={field.onChange}
+                                                value={field.value}
+                                            />
                                         </FormControl>
+                                        <FormMessage/>
                                     </FormItem>
                                 )}
                             />
