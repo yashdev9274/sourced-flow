@@ -18,6 +18,9 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, For
 import FileUpload from '../global/file-upload'
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { Button } from '../ui/button';
+import Loading from '../global/loading';
+
 import { cn } from "@/lib/utils"
 import {
     IconBrandGithub,
@@ -82,7 +85,7 @@ const AgencyDetails = ({ data }: Props) => {
                         Organisation Information
                     </CardTitle>
                     <CardDescription>
-                        Lets create your account for your company.
+                        Lets create an account for your organisation.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -270,8 +273,16 @@ const AgencyDetails = ({ data }: Props) => {
                             </div>
 
 
+                            {/* Create goal feature */}
+                            <Button
+                                type="submit"
+                                disabled={isLoading}
+                            >
+                                {isLoading ? <Loading /> : 'Save Organisation Details'}
+                            </Button>
                         </form>
                     </Form>
+
                 </CardContent>
             </Card>
         </AlertDialog >
