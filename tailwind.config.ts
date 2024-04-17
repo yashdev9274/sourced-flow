@@ -1,6 +1,14 @@
 import { withUt } from 'uploadthing/tw'
 import colors from 'tailwindcss/colors'
 
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+// const colors = require("tailwindcss/colors");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
+
 module.exports = withUt({
   darkMode: ['class'],
   content: [
@@ -187,4 +195,17 @@ module.exports = withUt({
     },
   ],
   plugins: [require('tailwindcss-animate')],
+
+
 })
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}

@@ -16,6 +16,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '../ui/form'
 import FileUpload from '../global/file-upload'
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { cn } from "@/lib/utils"
+import {
+    IconBrandGithub,
+    IconBrandGoogle,
+    IconBrandOnlyfans,
+} from "@tabler/icons-react";
 // import FileUpload from '../global/file-upload'
 
 type Props = {
@@ -96,12 +104,12 @@ const AgencyDetails = ({ data }: Props) => {
                                                 value={field.value}
                                             />
                                         </FormControl>
-                                        <FormMessage/>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
 
-                            {/* </FormField> */}
+
                         </form>
                     </Form>
                 </CardContent>
