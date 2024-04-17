@@ -106,7 +106,7 @@ module.exports = withUt({
           'tremor-full': '9999px',
         },
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
+        input: '0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -194,7 +194,7 @@ module.exports = withUt({
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|white|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
   ],
-  plugins: [require('tailwindcss-animate')],
+  plugins: [addVariablesForColors],
 
 
 })
