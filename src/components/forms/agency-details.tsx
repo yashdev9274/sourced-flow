@@ -2,7 +2,17 @@
 
 import React, { use, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { AlertDialog } from '../ui/alert-dialog'
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '../ui/alert-dialog'
 import { Agency } from '@prisma/client'
 import { useToast } from '../ui/use-toast'
 import {
@@ -50,7 +60,7 @@ const FormSchema = z.object({
 const AgencyDetails = ({ data }: Props) => {
     const { toast } = useToast();
     const router = useRouter()
-    const [deleteAgency, setDeletingAgecny] = useState(false)
+    const [deletingAgency, setDeletingAgecny] = useState(false)
     const form = useForm<z.infer<typeof FormSchema>>({
         mode: 'onChange',
         resolver: zodResolver(FormSchema),
@@ -76,6 +86,8 @@ const AgencyDetails = ({ data }: Props) => {
     }, [data])
 
     const handleSubmit = async () => { }
+
+    const handleDeleteAgency = async () => { }
 
     return (
         <AlertDialog>
@@ -282,6 +294,49 @@ const AgencyDetails = ({ data }: Props) => {
                             </Button>
                         </form>
                     </Form>
+
+                    {/* for deleting organisation and all the subaccounts */}
+
+                    {data?.id && (
+                        <div className="flex flex-row items-center justify-between rounded-lg border border-destructive gap-4 p-4 mt-4">
+                            <div>
+                                <div>Danger Zone</div>
+                            </div>
+                            <div className="text-muted-foreground">
+                                Deleting your organisation cannot be undone.
+                                {/* This will also delete all
+                                sub accounts and all data related to your sub accounts. Sub
+                                accounts will no longer have access to funnels, contacts etc. */}
+                            </div>
+                            <AlertDialogTrigger
+                                disabled={isLoading || deletingAgency}
+                                className="text-red-600 p-2 text-center mt-2 rounded-md hove:bg-red-600 hover:text-white whitespace-nowrap"
+                            >
+                                {deletingAgency ? 'Deleting...' : 'Delete Agency'}
+                            </AlertDialogTrigger>
+                        </div>
+                    )}
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle className="text-left">
+                                Are you absolutely sure?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="text-left">
+                                This action cannot be undone. This will permanently delete the
+                                Organisation account and all related sub accounts.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter className="flex items-center">
+                            <AlertDialogCancel className="mb-2">Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                                disabled={deletingAgency}
+                                className="bg-destructive hover:bg-destructive"
+                                onClick={handleDeleteAgency}
+                            >
+                                Delete
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
 
                 </CardContent>
             </Card>
