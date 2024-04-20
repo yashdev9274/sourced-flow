@@ -30,6 +30,10 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from '../ui/button';
 import Loading from '../global/loading';
+import {
+    deleteAgency,
+
+} from '@/lib/queries'
 
 import { cn } from "@/lib/utils"
 import {
@@ -60,7 +64,7 @@ const FormSchema = z.object({
 const AgencyDetails = ({ data }: Props) => {
     const { toast } = useToast();
     const router = useRouter()
-    const [deletingAgency, setDeletingAgecny] = useState(false)
+    const [deletingAgency, setDeletingAgency] = useState(false)
     const form = useForm<z.infer<typeof FormSchema>>({
         mode: 'onChange',
         resolver: zodResolver(FormSchema),
@@ -87,7 +91,17 @@ const AgencyDetails = ({ data }: Props) => {
 
     const handleSubmit = async () => { }
 
-    const handleDeleteAgency = async () => { }
+    const handleDeleteAgency = async () => {
+
+        if (!data?.id) return
+        setDeletingAgency(true)
+
+        try {
+            const respone = await deleteAgency(data.id)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <AlertDialog>
