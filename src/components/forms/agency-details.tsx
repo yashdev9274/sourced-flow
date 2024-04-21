@@ -32,6 +32,7 @@ import { Button } from '../ui/button';
 import Loading from '../global/loading';
 import {
     deleteAgency,
+    initUser,
 
 } from '@/lib/queries'
 
@@ -42,6 +43,9 @@ import {
     IconBrandOnlyfans,
 } from "@tabler/icons-react";
 import { Switch } from '../ui/switch'
+import { Email } from '@clerk/nextjs/server'
+import { getRandomValues } from 'crypto'
+import { initCustomTraceSubscriber } from 'next/dist/build/swc'
 // import FileUpload from '../global/file-upload'
 
 type Props = {
@@ -89,18 +93,63 @@ const AgencyDetails = ({ data }: Props) => {
         }
     }, [data])
 
-    const handleSubmit = async () => { }
+    const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
+        try {
+            let newUserData;
+            let customerId;
+            if (!data?.id) {
+                const bodyData = {
+                    email: values.companyEmail,
+                    name: values.name,
+                    shipping: {
+                        address: {
+                            city: values.city,
+                            country: values.country,
+                            line1: values.address,
+                            postal_code: values.zipCode,
+                            state: values.zipCode,
+                        },
+                        name: values.name,
+                    },
+                    address: {
+                        city: values.city,
+                        country: values.country,
+                        line1: values.address,
+                        postal_code: values.zipCode,
+                        state: values.zipCode,
+                    },
+                }
+
+                newUserData = await initUser({ role: 'AGENCY_OWNER' })
+                if (!data?.customerId) return
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleDeleteAgency = async () => {
 
         if (!data?.id) return
         setDeletingAgency(true)
-
+        // WIP: discontibue thee subscription
         try {
             const respone = await deleteAgency(data.id)
+            toast({
+                title: "Deleted Organisation",
+                description: "Organisation and sub-accounts deleted successfully"
+            })
+            router.refresh()
         } catch (error) {
             console.log(error)
+            toast({
+                variant: "destructive",
+                title: "Something went wrong!",
+                description: "Couldn't delete your Organisation"
+            })
         }
+        setDeletingAgency(false)
     }
 
     return (
