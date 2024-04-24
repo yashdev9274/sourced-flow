@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.7.9
     version: 1.7.9(react@18.2.0)
   '@hookform/resolvers':
-    specifier: 1.0.0-rc.2
-    version: 1.0.0-rc.2(react-hook-form@7.51.0)
+    specifier: ^3.3.3
+    version: 3.3.4(react-hook-form@7.51.0)
   '@prisma/client':
     specifier: ^5.10.2
     version: 5.10.2(prisma@5.10.2)
@@ -352,10 +352,10 @@ packages:
       tailwindcss: 3.4.1
     dev: false
 
-  /@hookform/resolvers@1.0.0-rc.2(react-hook-form@7.51.0):
-    resolution: {integrity: sha512-D+O3cB24IwsIQBi68nK4A0Dm3AYS7YwhA68WmknjYpdBSsHe+7veQwA9vs6cdNIuIaZshr+6uPUtYaKmlvDzVQ==}
+  /@hookform/resolvers@3.3.4(react-hook-form@7.51.0):
+    resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
     peerDependencies:
-      react-hook-form: '>=6.6.0'
+      react-hook-form: ^7.0.0
     dependencies:
       react-hook-form: 7.51.0(react@18.2.0)
     dev: false

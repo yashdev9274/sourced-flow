@@ -21,7 +21,7 @@ import {
     CardHeader,
     CardTitle,
 } from '../ui/card'
-import { z } from 'zod'
+import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '../ui/form'
@@ -125,7 +125,7 @@ const AgencyDetails = ({ data }: Props) => {
             }
             newUserData = await initUser({ role: 'AGENCY_OWNER' })
             if (!data?.id) {
-                const response = await upsertAgency({
+                await upsertAgency({
                     id: data?.id ? data.id : v4(),
                     address: values.address,
                     agencyLogo: values.agencyLogo,
@@ -145,10 +145,11 @@ const AgencyDetails = ({ data }: Props) => {
                 toast({
                     title: 'Created Agency',
                 })
-                if (data?.id) return router.refresh()
-                if (response) {
-                    return router.refresh()
-                }
+                // if (data?.id) return router.refresh()
+                // if (response) {
+                //     return router.refresh()
+                // }
+                return router.refresh()
             }
 
         } catch (error) {
@@ -441,6 +442,3 @@ const AgencyDetails = ({ data }: Props) => {
 
 export default AgencyDetails
 
-function async() {
-    throw new Error('Function not implemented.')
-}
