@@ -44,6 +44,9 @@ dependencies:
   '@tremor/react':
     specifier: ^3.16.0
     version: 3.16.0(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.1)
+  '@types/uuid':
+    specifier: ^9.0.8
+    version: 9.0.8
   '@uploadthing/react':
     specifier: ^6.2.2
     version: 6.3.4(next@14.1.0)(react@18.2.0)(uploadthing@6.5.2)
@@ -86,6 +89,9 @@ dependencies:
   uploadthing:
     specifier: ^6.3.3
     version: 6.5.2(next@14.1.0)(tailwindcss@3.4.1)
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -1505,6 +1511,10 @@ packages:
       '@types/http-errors': 2.0.4
       '@types/mime': 3.0.4
       '@types/node': 20.11.26
+    dev: false
+
+  /@types/uuid@9.0.8:
+    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
     dev: false
 
   /@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2):
@@ -4523,6 +4533,11 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+    dev: false
 
   /victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
