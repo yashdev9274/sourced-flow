@@ -1,6 +1,6 @@
 "use client"
 
-import React, { use, useEffect, useState } from 'react'
+import React, { use, useEffect, useState, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import {
     AlertDialog,
@@ -91,20 +91,30 @@ const AgencyDetails = ({ data }: Props) => {
     const isLoading = form.formState.isSubmitting
 
     useEffect(() => {
-        if (data) {
-            form.reset(data)
+        if (data && data.id) {
+            setDeletingAgency(true);
         }
     }, [data])
 
-    const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
-        try {
-            let newUserData;
-            let customerId;
-            if (!data?.id) {
-                const bodyData = {
-                    email: values.companyEmail,
-                    name: values.name,
-                    shipping: {
+    const handleSubmitCallback = useCallback(
+        async (values: z.infer<typeof FormSchema>) => {
+            try {
+                let newUserData;
+                let customerId;
+                if (!data?.id) {
+                    const bodyData = {
+                        email: values.companyEmail,
+                        name: values.name,
+                        shipping: {
+                            address: {
+                                city: values.city,
+                                country: values.country,
+                                line1: values.address,
+                                postal_code: values.zipCode,
+                                state: values.zipCode,
+                            },
+                            name: values.name,
+                        },
                         address: {
                             city: values.city,
                             country: values.country,
@@ -112,56 +122,49 @@ const AgencyDetails = ({ data }: Props) => {
                             postal_code: values.zipCode,
                             state: values.zipCode,
                         },
-                        name: values.name,
-                    },
-                    address: {
-                        city: values.city,
-                        country: values.country,
-                        line1: values.address,
-                        postal_code: values.zipCode,
-                        state: values.zipCode,
-                    },
+                    };
+
+                    newUserData = await initUser({ role: 'AGENCY_OWNER' });
                 }
 
-            }
-            newUserData = await initUser({ role: 'AGENCY_OWNER' })
-            if (!data?.id) {
-                await upsertAgency({
-                    id: data?.id ? data.id : v4(),
-                    address: values.address,
-                    agencyLogo: values.agencyLogo,
-                    city: values.city,
-                    companyPhone: values.companyPhone,
-                    country: values.country,
-                    name: values.name,
-                    state: values.state,
-                    whiteLabel: values.whiteLabel,
-                    zipCode: values.zipCode,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                    companyEmail: values.companyEmail,
-                    connectAccountId: '',
-                    goal: 5,
-                })
-                toast({
-                    title: 'Created Agency',
-                })
-                // if (data?.id) return router.refresh()
-                // if (response) {
-                //     return router.refresh()
-                // }
-                return router.refresh()
-            }
+                if (!data?.id) {
+                    await upsertAgency({
+                        id: data?.id ? data.id : v4(),
+                        address: values.address,
+                        agencyLogo: values.agencyLogo,
+                        city: values.city,
+                        companyPhone: values.companyPhone,
+                        country: values.country,
+                        name: values.name,
+                        state: values.state,
+                        whiteLabel: values.whiteLabel,
+                        zipCode: values.zipCode,
+                        createdAt: new Date(),
+                        updatedAt: new Date(),
+                        companyEmail: values.companyEmail,
+                        connectAccountId: '',
+                        goal: 5,
+                    });
 
-        } catch (error) {
-            console.log(error)
-            toast({
-                variant: 'destructive',
-                title: 'Oppse!',
-                description: 'could not create your organisation',
-            })
-        }
-    }
+                    toast({
+                        title: 'Created Agency',
+                    });
+
+                    return router.refresh();
+                }
+
+            } catch (error) {
+                console.log(error);
+                toast({
+                    variant: 'destructive',
+                    title: 'Oops!',
+                    description: 'Could not create your organization',
+                });
+            }
+        },
+        [data, form, router, toast] // Add dependencies as needed
+    );
+
 
     const handleDeleteAgency = async () => {
 
@@ -200,7 +203,7 @@ const AgencyDetails = ({ data }: Props) => {
                 <CardContent>
                     <Form {...form}>
                         <form
-                            onSubmit={form.handleSubmit(handleSubmit)}
+                            onSubmit={form.handleSubmit(handleSubmitCallback)}
                             className="space-y-4"
                         >
                             <FormField
