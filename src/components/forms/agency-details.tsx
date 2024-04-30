@@ -29,6 +29,7 @@ import FileUpload from '../global/file-upload'
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from '../ui/button';
+import { Loader2 } from "lucide-react"
 import Loading from '../global/loading';
 import {
     deleteAgency,
@@ -231,8 +232,10 @@ const AgencyDetails = ({ data }: Props) => {
                                             <FormLabel>Organisation Name</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="Your company name"
-                                                    {...field}
+                                                    placeholder="Your organisation Name"
+                                                    value={field.value || ''}
+                                                    onChange={field.onChange}
+                                                    disabled={isLoading}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -274,8 +277,10 @@ const AgencyDetails = ({ data }: Props) => {
                                             <FormLabel>Phone Number</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="Phone"
-                                                    {...field}
+                                                    placeholder="Your organisation Phone number"
+                                                    value={field.value || ''}
+                                                    onChange={field.onChange}
+                                                    disabled={isLoading}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -318,8 +323,10 @@ const AgencyDetails = ({ data }: Props) => {
                                         <FormLabel>Address</FormLabel>
                                         <FormControl>
                                             <Input
-                                                placeholder="123 st..."
-                                                {...field}
+                                                placeholder="123 str..."
+                                                value={field.value || ''}
+                                                onChange={field.onChange}
+                                                disabled={isLoading}
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -336,8 +343,10 @@ const AgencyDetails = ({ data }: Props) => {
                                             <FormLabel>City</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="City"
-                                                    {...field}
+                                                    placeholder="City Name"
+                                                    value={field.value || ''}
+                                                    onChange={field.onChange}
+                                                    disabled={isLoading}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -353,8 +362,10 @@ const AgencyDetails = ({ data }: Props) => {
                                             <FormLabel>State</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="State"
-                                                    {...field}
+                                                    placeholder="State Name"
+                                                    value={field.value || ''}
+                                                    onChange={field.onChange}
+                                                    disabled={isLoading}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -371,7 +382,9 @@ const AgencyDetails = ({ data }: Props) => {
                                             <FormControl>
                                                 <Input
                                                     placeholder="Zipcode"
-                                                    {...field}
+                                                    value={field.value || ''}
+                                                    onChange={field.onChange}
+                                                    disabled={isLoading}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -379,14 +392,52 @@ const AgencyDetails = ({ data }: Props) => {
                                     )}
                                 />
                             </div>
-
-
-                            {/* Create goal feature */}
-                            <Button
-                                type="submit"
+                            <FormField
                                 disabled={isLoading}
-                            >
-                                {isLoading ? <Loading /> : 'Save Organisation Details'}
+                                control={form.control}
+                                name="country"
+                                render={({ field }) => (
+                                    <FormItem className="flex-1">
+                                        <FormLabel>Country</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="Country"
+                                                value={field.value || ''}
+                                                onChange={field.onChange}
+                                                disabled={isLoading}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            {/* {data?.id && (
+                                <div className="flex flex-col gap-2">
+                                    <FormLabel>Create A Goal</FormLabel>
+                                    <FormDescription>
+                                        ✨ Create a goal for your agency. As your business grows
+                                        your goals grow too so dont forget to set the bar higher!
+                                    </FormDescription>
+                                    <NumberInput
+                                        defaultValue={data?.goal}
+                                        onValueChange={async (val) => {
+                                            if (!data?.id) return
+                                            await updateAgencyDetails(data.id, { goal: val })
+                                            await saveActivityLogsNotification({
+                                                agencyId: data.id,
+                                                description: `Updated the agency goal to | ${val} Sub Account`,
+                                                subaccountId: undefined,
+                                            })
+                                            router.refresh()
+                                        }}
+                                        min={1}
+                                        className="bg-background !border !border-input"
+                                        placeholder="Sub Account Goal"
+                                    />
+                                </div>
+                            )} */}
+                            <Button type="submit" disabled={isLoading}>
+                                {isLoading ? <Loading /> : 'Submit Info'}
                             </Button>
                         </form>
                     </Form>
