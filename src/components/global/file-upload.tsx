@@ -69,7 +69,7 @@ const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
                 onClientUploadComplete={(res) => {
                     onChange(res?.[0].url)
                 }}
-                onUpladError={(error: Error) => {
+                onUploadError={(error: Error) => {
                     console.log(error)
                 }}
             />
