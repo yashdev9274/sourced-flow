@@ -17,3 +17,5 @@ const Unauthorized = (props: Props) => {
         </div>
     )
 }
+
+export default Unauthorized;
