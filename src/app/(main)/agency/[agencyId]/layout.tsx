@@ -1,5 +1,6 @@
+import Sidebar from '@/components/sidebar'
 import Unauthorized from '@/components/unauthorized'
-import { verifyAndAcceptInvitation } from '@/lib/queries'
+import { getNotificationAndUser, verifyAndAcceptInvitation } from '@/lib/queries'
 import { currentUser } from '@clerk/nextjs'
 import { redirect } from "next/navigation"
 import React from 'react'
@@ -28,8 +29,20 @@ const layout = async ({ children, params }: Props) => {
     )
         return <Unauthorized />
 
+    let allNoti: any = []
+    const notifications = await getNotificationAndUser(agencyId)
+    if (notifications) allNoti = notifications
+
     return (
-        <div>layout</div>
+        <div className='h-screen overflow-hidden'>
+            <Sidebar
+                id={params.agencyId}
+                type="agency"
+            />
+            <div className='md:pl-[300px]'>
+
+            </div>
+        </div>
     )
 }
 

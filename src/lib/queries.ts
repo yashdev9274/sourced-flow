@@ -281,7 +281,7 @@ export const getNotificationAndUser = async (agencyId: string) => {
       where: { agencyId },
       include: { User: true },
       orderBy: {
-        createdAt: 'desc'
+        createdAt: 'desc' // ordering in descending order
       }
     })
     return response
