@@ -1,3 +1,4 @@
+import Unauthorized from '@/components/unauthorized'
 import { verifyAndAcceptInvitation } from '@/lib/queries'
 import { currentUser } from '@clerk/nextjs'
 import { redirect } from "next/navigation"
@@ -25,11 +26,11 @@ const layout = async ({ children, params }: Props) => {
         user.privateMetadata.role !== 'AGENCY_OWNER' &&
         user.privateMetadata.role !== 'AGENCY_ADMIN'
     )
-        // return <Unauthorized />
+        return <Unauthorized />
 
-        return (
-            <div>layout</div>
-        )
+    return (
+        <div>layout</div>
+    )
 }
 
 export default layout;
