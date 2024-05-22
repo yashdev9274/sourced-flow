@@ -41,6 +41,8 @@ const MenuOptions = ({
         setIsMounted(true)
     }, [])
 
+    if (!isMounted) return
+
     return (
         <div>MenuOptions</div>
     )
