@@ -40,7 +40,7 @@ const layout = async ({ children, params }: Props) => {
                 type="agency"
             />
             <div className='md:pl-[300px]'>
-
+                {children}
             </div>
         </div>
     )
