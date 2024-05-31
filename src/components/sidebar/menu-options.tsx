@@ -12,6 +12,8 @@ import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import { Button } from '../ui/button'
 import { Menu } from 'lucide-react'
 import clsx from 'clsx'
+import { AspectRatio } from '../ui/aspect-ratio'
+import Image from 'next/image'
 
 type Props = {
 
@@ -75,7 +77,15 @@ const MenuOptions = ({
                     }
                 )}
             >
-
+                <div>
+                    <AspectRatio ratio={16 / 5} />
+                    <Image
+                        src={sidebarLogo}
+                        alt="Sidebar Logo"
+                        fill
+                        className="rounded-md object-contain"
+                    />
+                </div>
             </SheetContent>
         </Sheet>
     )
