@@ -14,6 +14,7 @@ import { Menu } from 'lucide-react'
 import clsx from 'clsx'
 import { AspectRatio } from '../ui/aspect-ratio'
 import Image from 'next/image'
+import { Popover } from '../ui/popover'
 
 type Props = {
 
@@ -86,6 +87,7 @@ const MenuOptions = ({
                             className="rounded-md object-contain"
                         />
                     </AspectRatio>
+                    <Popover></Popover>
                 </div>
             </SheetContent>
         </Sheet>
