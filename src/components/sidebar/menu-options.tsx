@@ -78,13 +78,14 @@ const MenuOptions = ({
                 )}
             >
                 <div>
-                    <AspectRatio ratio={16 / 5} />
-                    <Image
-                        src={sidebarLogo}
-                        alt="Sidebar Logo"
-                        fill
-                        className="rounded-md object-contain"
-                    />
+                    <AspectRatio ratio={16 / 5} >
+                        <Image
+                            src={sidebarLogo}
+                            alt="Sidebar Logo"
+                            fill
+                            className="rounded-md object-contain"
+                        />
+                    </AspectRatio>
                 </div>
             </SheetContent>
         </Sheet>
