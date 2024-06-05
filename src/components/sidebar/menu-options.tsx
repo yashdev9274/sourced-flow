@@ -14,7 +14,8 @@ import { Menu } from 'lucide-react'
 import clsx from 'clsx'
 import { AspectRatio } from '../ui/aspect-ratio'
 import Image from 'next/image'
-import { Popover } from '../ui/popover'
+import { Popover, PopoverTrigger } from '../ui/popover'
+import Compass from '../icons/compass'
 
 type Props = {
 
@@ -87,7 +88,22 @@ const MenuOptions = ({
                             className="rounded-md object-contain"
                         />
                     </AspectRatio>
-                    <Popover></Popover>
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button
+                                className='w-full my-4 flex items-center justify-between py-8'
+                                variant="ghost"
+                            >
+                                <div className='flex items-center text-left gap-2'>
+                                    <Compass />
+                                    <div className='flex flex-col'>
+                                        {details.name}
+                                    </div>
+                                </div>
+
+                            </Button>
+                        </PopoverTrigger>
+                    </Popover>
                 </div>
             </SheetContent>
         </Sheet>
