@@ -16,7 +16,8 @@ import { AspectRatio } from '../ui/aspect-ratio'
 import Image from 'next/image'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import Compass from '../icons/compass'
-// import { Command } from '../ui/command'
+import { Command } from '../ui/command'
+
 
 type Props = {
 
@@ -111,9 +112,9 @@ const MenuOptions = ({
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-80 h-80 mt-4 z-[200]">
-                            {/* <Command>
+                            <Command>
 
-                            </Command> */}
+                            </Command>
 
                         </PopoverContent>
                     </Popover>
