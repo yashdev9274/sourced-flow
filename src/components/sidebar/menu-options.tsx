@@ -10,12 +10,13 @@ import {
 import { useEffect, useMemo, useState } from 'react'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import { Button } from '../ui/button'
-import { Menu } from 'lucide-react'
+import { LucideChevronDownCircle, Menu } from 'lucide-react'
 import clsx from 'clsx'
 import { AspectRatio } from '../ui/aspect-ratio'
 import Image from 'next/image'
-import { Popover, PopoverTrigger } from '../ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import Compass from '../icons/compass'
+// import { Command } from '../ui/command'
 
 type Props = {
 
@@ -100,9 +101,21 @@ const MenuOptions = ({
                                         {details.name}
                                     </div>
                                 </div>
+                                <div>
+                                    <LucideChevronDownCircle
+                                        size={16}
+                                        className="text-muted-foreground"
+                                    />
+                                </div>
 
                             </Button>
                         </PopoverTrigger>
+                        <PopoverContent className="w-80 h-80 mt-4 z-[200]">
+                            {/* <Command>
+
+                            </Command> */}
+
+                        </PopoverContent>
                     </Popover>
                 </div>
             </SheetContent>
