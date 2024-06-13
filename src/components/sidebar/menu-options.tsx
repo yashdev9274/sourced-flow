@@ -127,7 +127,7 @@ const MenuOptions = ({
                                     {(user?.role === 'AGENCY_OWNER' ||
                                         user?.role === 'AGENCY_ADMIN') &&
                                         user?.Agency && (
-                                            <CommandGroup heading="Agency">
+                                            <CommandGroup heading="Organization">
                                                 <CommandItem className="!bg-transparent my-2 text-primary broder-[1px] border-border p-2 rounded-md hover:!bg-muted cursor-pointer transition-all">
                                                     {defaultOpen ? (
                                                         <Link
