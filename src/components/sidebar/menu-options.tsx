@@ -25,6 +25,8 @@ import {
     CommandList,
 } from '../ui/command'
 import Link from 'next/link'
+import CustomModal from '../global/custom-modal'
+import { useModal } from '@/providers/modal-provider'
 
 
 type Props = {
@@ -47,7 +49,7 @@ const MenuOptions = ({
     user,
     defaultOpen,
 }: Props) => {
-    // const { setOpen } = useModal()
+    const { setOpen } = useModal()
     const [isMounted, setIsMounted] = useState(false)
 
     const openState = useMemo(
@@ -232,6 +234,7 @@ const MenuOptions = ({
                                         <SheetClose>
                                             <Button
                                                 className="w-full flex gap-2"
+                                                onClick={() => { }}
                                             >
                                                 <PlusCircleIcon size={15} />
                                                 Create Sub Account
