@@ -22,7 +22,7 @@ import { features } from 'process'
 export default function Home() {
   return (
     <>
-    
+
       <section className="
         h-full w-full pt-36 
         relative flex items-center 
@@ -36,7 +36,8 @@ export default function Home() {
         <MainPageCardComponents />
       </section>
       <WeAreOpensourced />
-      <Footer/>
+      <Footer />
+      // gibberish comment
     </>
   );
 }
