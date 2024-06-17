@@ -37,7 +37,6 @@ export default function Home() {
       </section>
       <WeAreOpensourced />
       <Footer />
-      // gibberish comment
     </>
   );
 }
