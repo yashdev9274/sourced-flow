@@ -394,3 +394,25 @@ export const updateUser = async (user: Partial<User>) => {
 
   return response
 }
+
+export const changeUserPermissions = async (
+  permissionId: string | undefined,
+  userEmail: string,
+  subAccountId: string,
+  permission: boolean
+) => {
+  try {
+    const response = await db.permissions.upsert({
+      where: { id: permissionId },
+      update: { access: permission },
+      create: {
+        access: permission,
+        email: userEmail,
+        subAccountId: subAccountId,
+      },
+    })
+    return response
+  } catch (error) {
+    console.log('🔴Could not change persmission', error)
+  }
+}
