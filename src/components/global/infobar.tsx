@@ -10,6 +10,7 @@ import { Bell } from 'lucide-react'
 import { Card } from '../ui/card'
 import { Switch } from '../ui/switch'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { ModeToggle } from './mode-toggle'
 
 type Props = {
     notifications: NotificationWithUser | []
@@ -118,6 +119,7 @@ const Infobar = ({ notifications, role, subAccountId, className }: Props) => {
                             )}
                         </SheetContent>
                     </Sheet>
+                    <ModeToggle />
                 </div>
             </div>
         </>
