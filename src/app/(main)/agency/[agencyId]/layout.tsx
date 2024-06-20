@@ -1,4 +1,5 @@
 import BlurePage from '@/components/global/blur-page'
+import Infobar from '@/components/global/infobar'
 import Sidebar from '@/components/sidebar'
 import Unauthorized from '@/components/unauthorized'
 import { getNotificationAndUser, verifyAndAcceptInvitation } from '@/lib/queries'
@@ -41,6 +42,7 @@ const layout = async ({ children, params }: Props) => {
                 type="agency"
             />
             <div className='md:pl-[300px]'>
+                <Infobar />
                 <div className='relative'>
                     <BlurePage>
 
