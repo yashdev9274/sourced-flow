@@ -1,5 +1,6 @@
-import { Prisma, Role, Notification } from "@prisma/client"
+import { Prisma, Role, Notification, Lane, Ticket, Tag, User, Contact } from "@prisma/client"
 import { getAuthUserDetails, getUserPermissions } from "./queries"
+import { z } from "zod"
 
 export type NotificationWithUser =
     | ({
@@ -22,3 +23,17 @@ export type AuthUserWithAgencySigebarOptionsSubAccounts =
 export type UserWithPermissionsAndSubAccounts = Prisma.PromiseReturnType<
     typeof getUserPermissions
 >
+
+export type TicketAndTags = Ticket & {
+    Tags: Tag[]
+    Assigned: User | null
+    Customer: Contact | null
+}
+
+export type LaneDetail = Lane & {
+    Tickets: TicketAndTags[]
+}
+
+export const CreatePipelineFormSchema = z.object({
+    name: z.string().min(1),
+})
