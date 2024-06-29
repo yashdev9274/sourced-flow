@@ -15,6 +15,8 @@ import {
   User
 } from "@prisma/client"
 import { v4 } from "uuid"
+import { z } from "zod"
+import { CreateFunnelFormSchema } from "./types"
 
 export const getAuthUserDetails = async () => {
   const user = await currentUser()
