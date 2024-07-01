@@ -7,6 +7,7 @@ import { LaneDetail } from '@/lib/types'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import PipelineInfoBar from '../_components/pipeline-infobar'
 
 
 type Props = {
@@ -33,7 +34,18 @@ const PipelineIdPage = async ({ params }: Props) => {
             className="w-full"
         >
             <TabsList className="bg-transparent border-b-2 h-16 w-full justify-between mb-4">
+                <PipelineInfoBar
+                    pipelineId={params.pipelineId}
+                    subAccountId={params.subaccountId}
+                    pipelines={pipelines}
+                />
+                <div>
+                    <TabsTrigger value="view">Pipeline View</TabsTrigger>
+                    <TabsTrigger value="settings">Settings</TabsTrigger>
+                </div>
             </TabsList>
+            <TabsContent value="view">
+            </TabsContent>
         </Tabs>
     )
 }
