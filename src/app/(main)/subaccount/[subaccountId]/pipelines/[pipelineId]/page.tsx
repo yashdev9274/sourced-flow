@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import PipelineInfoBar from '../_components/pipeline-infobar'
+import PipelineView from '../_components/pipeline-view'
 
 
 type Props = {
@@ -45,6 +46,7 @@ const PipelineIdPage = async ({ params }: Props) => {
                 </div>
             </TabsList>
             <TabsContent value="view">
+                <PipelineView />
             </TabsContent>
         </Tabs>
     )
