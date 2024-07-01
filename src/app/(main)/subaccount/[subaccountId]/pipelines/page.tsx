@@ -13,7 +13,7 @@ const Pipelines = async ({ params }: Props) => {
 
     if (pipelineExists)
         return redirect(
-            `/subaccount/${params.subaccountId}/pipelines`
+            `/subaccount/${params.subaccountId}/pipelines/${pipelineExists.id}`
         )
 
     try {
@@ -22,7 +22,7 @@ const Pipelines = async ({ params }: Props) => {
         })
 
         return redirect(
-            `/subaccount/${params.subaccountId}/pipelines`
+            `/subaccount/${params.subaccountId}/pipelines/${response.id}`
         )
     } catch (error) {
         console.log()
