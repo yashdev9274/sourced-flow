@@ -46,7 +46,7 @@ const PipelineIdPage = async ({ params }: Props) => {
                 </div>
             </TabsList>
             <TabsContent value="view">
-                <PipelineView />
+                {/* <PipelineView /> */}
             </TabsContent>
         </Tabs>
     )
