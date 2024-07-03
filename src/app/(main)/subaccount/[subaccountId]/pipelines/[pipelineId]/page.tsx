@@ -2,6 +2,8 @@ import { db } from '@/lib/db'
 import {
     getLanesWithTicketAndTags,
     getPipelineDetails,
+    updateLanesOrder,
+    updateTicketsOrder,
 } from '@/lib/queries'
 import { LaneDetail } from '@/lib/types'
 import { redirect } from 'next/navigation'
@@ -46,7 +48,14 @@ const PipelineIdPage = async ({ params }: Props) => {
                 </div>
             </TabsList>
             <TabsContent value="view">
-                {/* <PipelineView /> */}
+                <PipelineView
+                    lanes={lanes}
+                    pipelineDetails={pipelineDetails}
+                    pipelineId={params.pipelineId}
+                    subaccountId={params.subaccountId}
+                    updateLanesOrder={updateLanesOrder}
+                    updateTicketsOrder={updateTicketsOrder}
+                />
             </TabsContent>
         </Tabs>
     )

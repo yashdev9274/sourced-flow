@@ -28,10 +28,10 @@ import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { Edit, MoreVertical, PlusCircleIcon, Trash } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { Dispatch, SetStateAction, useMemo } from 'react'
-import PipelineTicket from './pipeline-ticket'
 import CustomModal from '@/components/global/custom-modal'
-// import TicketForm from '@/components/forms/ticket-form'
+import TicketForm from '@/components/forms/ticket-form'
 import { Badge } from '@/components/ui/badge'
+import PipelineTicket from './pipeline-ticket'
 
 interface PipelaneLaneProps {
     setAllTickets: Dispatch<SetStateAction<TicketWithTags>>
@@ -74,20 +74,20 @@ const PipelineLane: React.FC<PipelaneLaneProps> = ({
         setAllTickets([...allTickets, ticket])
     }
 
-    // const handleCreateTicket = () => {
-    //     setOpen(
-    //         <CustomModal
-    //             title="Create A Ticket"
-    //             subheading="Tickets are a great way to keep track of tasks"
-    //         >
-    //             <TicketForm
-    //                 getNewTicket={addNewTicket}
-    //                 laneId={laneDetails.id}
-    //                 subaccountId={subaccountId}
-    //             />
-    //         </CustomModal>
-    //     )
-    // }
+    const handleCreateTicket = () => {
+        setOpen(
+            <CustomModal
+                title="Create A Ticket"
+                subheading="Tickets are a great way to keep track of tasks"
+            >
+                <TicketForm
+                    getNewTicket={addNewTicket}
+                    laneId={laneDetails.id}
+                    subaccountId={subaccountId}
+                />
+            </CustomModal>
+        )
+    }
 
     const handleEditLane = () => {
         setOpen(
