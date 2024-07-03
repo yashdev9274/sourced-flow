@@ -220,6 +220,7 @@ const PipelineLane: React.FC<PipelaneLaneProps> = ({
                                         </DropdownMenuItem>
                                         <DropdownMenuItem
                                             className="flex items-center gap-2"
+                                            onClick={handleCreateTicket}
 
                                         >
                                             <PlusCircleIcon size={15} />
