@@ -157,6 +157,7 @@ export const verifyAndAcceptInvitation = async () => {
       role: invitationExists.role,
       createdAt: new Date(),
       updatedAt: new Date(),
+      workspaceId: null,
     })
 
     await saveActivityLogsNotification({
