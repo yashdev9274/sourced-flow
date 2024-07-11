@@ -268,6 +268,11 @@ export const upsertAgency = async (agency: Agency, price?: Plan) => {
               icon: 'shield',
               link: `/agency/${agency.id}/team`,
             },
+            {
+              name: 'Project',
+              icon: 'clipboardIcon',
+              link: `/agency/${agency.id}/project`,
+            },
           ],
         },
       },
