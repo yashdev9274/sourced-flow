@@ -70,8 +70,60 @@ model User {
   Permissions  Permissions[]
   Ticket       Ticket[]
   Notification Notification[]
+  Workspace    Workspace?     @relation(fields: [workspaceId], references: [id])
+  workspaceId  String?
 
   @@index([agencyId])
+}
+
+model Workspace {
+  id             String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  workspaceOwner String
+  title          String
+  iconId         String
+  data           String?
+  inTrash        String?
+  logo           String?
+  bannerUrl      String?
+
+  // relations
+  folders      Folder[]
+  files        File[]
+  users        User[]
+  SubAccount   SubAccount? @relation(fields: [subAccountId], references: [id])
+  subAccountId String?
+}
+
+model Folder {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  title       String
+  iconId      String
+  data        String?
+  inTrash     String?
+  bannerUrl   String?
+  workspaceId String
+
+  // relations
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  files     File[]
+}
+
+model File {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  title       String
+  iconId      String
+  data        String?
+  inTrash     String?
+  bannerUrl   String?
+  workspaceId String
+  folderId    String
+
+  // relations
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  folder    Folder    @relation(fields: [folderId], references: [id], onDelete: Cascade)
 }
 
 model Permissions {
@@ -138,6 +190,7 @@ model SubAccount {
   Pipeline         Pipeline[]
   Tags             Tag[]
   Notification     Notification[]
+  Workspace        Workspace[]
 
   @@index([agencyId])
 }
