@@ -13,6 +13,8 @@ export type NotificationWithUser =
             updatedAt: Date
             role: Role
             agencyId: string | null
+            billingAddress: Json | null;
+            paymentMethod: Json | null;
         }
     } & Notification)[]
     | undefined
@@ -68,3 +70,100 @@ export const TicketFormSchema = z.object({
 export type TicketDetails = Prisma.PromiseReturnType<
     typeof _getTicketsWithAllRelations
 >
+
+export type Json =
+    | string
+    | number
+    | boolean
+    | null
+    | { [key: string]: Json | undefined }
+    | Json[];
+
+export type Collaborator = {
+    id: string;
+    createdAt: Date;
+    userId: string;
+    workspaceId: string;
+};
+
+export type Customer = {
+    id: string;
+    stripeCustomerId: string | null;
+};
+
+export type File = {
+    id: string;
+    createdAt: Date;
+    bannerUrl: string | null;
+    data: string | null;
+    folderId: string;
+    iconId: string;
+    inTrash: string | null;
+    title: string;
+    workspaceId: string;
+};
+
+export type Folder = {
+    id: string;
+    createdAt: Date;
+    bannerUrl: string | null;
+    data: string | null;
+    iconId: string;
+    inTrash: string | null;
+    title: string;
+    workspaceId: string;
+};
+
+
+
+export type Product = {
+    id: string;
+    active: boolean | null;
+    description: string | null;
+    image: string | null;
+    metadata: Json | null;
+    name: string | null;
+};
+
+// export type Subscription = {
+//     id: string;
+//     cancelAt: Date | null;
+//     cancelAtPeriodEnd: boolean | null;
+//     canceledAt: Date | null;
+//     created: Date;
+//     currentPeriodEnd: Date;
+//     currentPeriodStart: Date;
+//     endedAt: Date | null;
+//     metadata: Json | null;
+//     priceId: string | null;
+//     quantity: number | null;
+//     status: SubscriptionStatus | null;
+//     trialEnd: Date | null;
+//     trialStart: Date | null;
+//     userId: string;
+// };
+
+// export type User = {
+//     id: string;
+//     avatarUrl: string | null;
+//     billingAddress: Json | null;
+//     email: string | null;
+//     fullName: string | null;
+//     paymentMethod: Json | null;
+//     updatedAt: Date | null;
+// };
+
+export type Workspace = {
+    id: string;
+    createdAt: Date;
+    bannerUrl: string | null;
+    data: string | null;
+    iconId: string;
+    inTrash: string | null;
+    logo: string | null;
+    title: string;
+    workspaceOwner: string;
+};
+
+export type ProductWithPrice = Product & {
+};

@@ -2,7 +2,9 @@ import React from 'react'
 
 const ProjectPage = () => {
     return (
-        <div>ProjectPage</div>
+        <div>
+            ProjectPage
+        </div>
     )
 }
 
