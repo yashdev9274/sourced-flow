@@ -1,5 +1,6 @@
 import { Tabs, TabsList, TabsContent, TabsTrigger } from '@/components/ui/tabs'
 import React from 'react'
+import FilePreview from './_components/filePreview'
 
 const ProjectPage = () => {
     return (
@@ -15,7 +16,7 @@ const ProjectPage = () => {
                 </div>
             </TabsList>
             <TabsContent value="view">
-
+                <FilePreview />
             </TabsContent>
         </Tabs>
     )
