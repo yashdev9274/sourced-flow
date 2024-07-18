@@ -17,8 +17,8 @@ function FilePreview() {
         <div>
 
             <Dialog>
-                <DialogTrigger className='w-20' asChild>
-                    <Button className='w-full bg-black hover:bg-zinc-900 justify-start mt-3 text-white'>New File</Button>
+                <DialogTrigger className='w-20 justify-end' asChild>
+                    <Button className='w-20 bg-black hover:bg-zinc-900 justify-centre mt-3 text-white'>New File</Button>
                 </DialogTrigger>
 
                 <DialogContent>

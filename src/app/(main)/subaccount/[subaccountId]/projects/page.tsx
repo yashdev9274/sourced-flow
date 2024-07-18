@@ -18,6 +18,9 @@ const ProjectPage = () => {
             <TabsContent value="view">
                 <FilePreview />
             </TabsContent>
+            <TabsContent value="view">
+                {/* <Files /> */}
+            </TabsContent>
         </Tabs>
     )
 }
