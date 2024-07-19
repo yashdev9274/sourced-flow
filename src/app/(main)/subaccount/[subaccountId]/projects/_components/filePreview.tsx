@@ -12,8 +12,40 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import React from 'react'
+import { unstable_noStore as noStore } from "next/cache";
+// import subaccountId from '../../page'
+// import { getAuthUserDetails } from '@/lib/queries'
+import { User } from '@clerk/nextjs/server'
+import { Prisma } from '@prisma/client'
 
-function FilePreview() {
+type Props = {
+    params: { subaccountId: string; file: any }
+}
+export default async function NewFileRoute() {
+
+    noStore();
+
+    // const user = await getAuthUserDetails();
+
+    async function postData(formData: FormData) {
+        "use server";
+
+        if (!User) {
+            throw new Error("Not Authorised")
+        }
+
+        const title = formData.get("title") as string;
+        const description = formData.get("description") as string;
+
+        // const file = await Prisma.files.create({
+        //     data: {
+        //         userId: User?.id,
+        //         description: description,
+        //         title: title,
+        //     },
+        // });
+    }
+
     return (
         <div>
 
@@ -66,5 +98,3 @@ function FilePreview() {
         </div >
     )
 }
-
-export default FilePreview
